@@ -162,9 +162,9 @@ body {
 }
 
 /* KPI GRID */
-.kpi-grid {
+.kpi-grid, .highlights-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
   gap: 1rem;
   margin-bottom: 0.5rem;
 }
@@ -344,11 +344,6 @@ tr.total-row td { font-weight: 900; color: var(--tia-pink); font-size: 0.74rem; 
 tr:hover:not(.total-row) { background: rgba(255,17,119,0.03); }
 
 /* HIGHLIGHTS */
-.highlights-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1rem;
-}
 .highlight-card {
   background: var(--tia-card);
   border-radius: 12px;
@@ -446,8 +441,12 @@ tr:hover:not(.total-row) { background: rgba(255,17,119,0.03); }
 @media (max-width: 768px) {
   .creator-grid { grid-template-columns: 1fr; }
   .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .kpi-grid, .highlights-grid { grid-template-columns: repeat(2, 1fr); }
   .hero h1 { font-size: 2.2rem; }
   .table-wrap { overflow-x: auto; }
+}
+@media (max-width: 480px) {
+  .kpi-grid, .highlights-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -477,7 +476,7 @@ tr:hover:not(.total-row) { background: rgba(255,17,119,0.03); }
   </div>
   <div class="divider"></div>
 
-  <div class="kpi-grid">
+  <div class="kpi-grid" style="--cols: 3;">
     <div class="kpi-card">
       <div class="label">Creators</div>
       <div class="value">9</div>
@@ -516,7 +515,7 @@ tr:hover:not(.total-row) { background: rgba(255,17,119,0.03); }
   </div>
   <div class="divider"></div>
 
-  <div class="highlights-grid">
+  <div class="highlights-grid" style="--cols: 3;">
     <div class="highlight-card">
       <span class="badge">Top Engagements</span>
       <div class="winner">Derek Pratt</div>
